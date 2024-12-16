@@ -7,7 +7,7 @@ tags:
   - container
   - スタートアップ
 private: false
-updated_at: '2024-12-16T17:53:34+09:00'
+updated_at: '2024-12-16T17:57:05+09:00'
 id: 3ee982d09139c76c0b91
 organization_url_name: null
 slide: false
