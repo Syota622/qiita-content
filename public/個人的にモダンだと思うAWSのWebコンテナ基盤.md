@@ -1,7 +1,11 @@
 ---
 title: 個人的にモダンだと思うAWSのWebコンテナ基盤
 tags:
-  - ''
+  - AWS
+  - スタートアップ
+  - Web
+  - コンテナ
+  - DevOps
 private: false
 updated_at: ''
 id: null
