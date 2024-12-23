@@ -106,7 +106,7 @@ AWSのマルチアカウント構成について、Control Tower、Organizations
 
 ### 共通基盤環境（Management/Security OU）
 - management、audit、logアカウントはdev/stg/prodの環境分離なし
-- mainブランチへのマージで直接デプロイ(GitHub Flow)
+- GitHub Flowに従い、mainブランチへのマージで直接デプロイ
 - 変更時は事前承認プロセスを実施
 - デプロイ前の自動テスト実施必須
 
@@ -152,6 +152,7 @@ AWSのマルチアカウント構成について、Control Tower、Organizations
 - CloudTrailログの集約設定
 - AWS Config集約設定
 - SecurityHubの統合
+- InspectorやGuardDutyの統合などなど
 
 # 7. シングルアカウントからの移行
 
@@ -162,11 +163,11 @@ AWSのマルチアカウント構成について、Control Tower、Organizations
 
 ## 7.2. 移行手順
 1. Control Towerのセットアップ
-2. 既存アカウントのOrganizationsへの招待
-3. Security OUの構築（audit, log）
-4. Member OUの構築（dev, stg）
-5. IAM Identity Centerの設定
-6. 既存環境からの段階的移行
+2. Security OUの構築（audit, log）
+3. Member OUの構築（dev, stg）
+4. IAM Identity Centerの設定
+5. 既存アカウントのOrganizationsへの招待
+6. 既存アカウントの開発・ステージング環境の削除
 
 ## 7.3. 移行時の注意点
 - 既存リソースの依存関係の確認
