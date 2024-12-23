@@ -1,5 +1,5 @@
 ---
-title: AWSマルチアカウントの実装
+title: モダンなAWSマルチアカウントの実装
 tags:
   - AWS
   - IAM Identity Center
