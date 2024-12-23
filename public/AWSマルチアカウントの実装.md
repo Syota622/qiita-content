@@ -37,6 +37,7 @@ AWSのマルチアカウント構成について、Control Tower、Organizations
 - セキュリティ監査の実施
 - コンプライアンスの確認
 - AWS Configルールの管理
+- SecurityHub、Inspector、GuardDuty、IAM Access Analyzerなどのセキュリティサービスの集約
 
 ### 2.2.2. ログアカウント（Log Account）
 - Config、CloudTrailログの集約
