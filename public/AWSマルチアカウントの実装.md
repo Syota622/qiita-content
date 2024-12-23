@@ -37,10 +37,10 @@ AWSのマルチアカウント構成について、Control Tower、Organizations
 - セキュリティ監査の実施
 - コンプライアンスの確認
 - AWS Configルールの管理
-- セキュリティログの保管（場合によってはログアカウントで管理）
 
 ### 2.2.2. ログアカウント（Log Account）
-- CloudTrailログの集約
+- Config、CloudTrailログの集約
+- セキュリティログの保管
 - ログ分析環境の提供
 
 ## 2.3. Member OU
