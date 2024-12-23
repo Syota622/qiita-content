@@ -4,8 +4,8 @@ tags:
   - AWS
   - Organizations
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-12-23T20:45:48+09:00'
+id: e9b1466d3c57983891fc
 organization_url_name: null
 slide: false
 ignorePublish: false
