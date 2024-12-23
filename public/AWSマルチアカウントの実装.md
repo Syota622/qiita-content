@@ -2,9 +2,9 @@
 title: モダンなAWSマルチアカウントの実装
 tags:
   - AWS
-  - IAM Identity Center
+  - "IAM Identity Center"
   - Organizations
-  - Control Tower
+  - "Control Tower"
 private: false
 updated_at: ''
 id: null
