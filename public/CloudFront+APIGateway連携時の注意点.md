@@ -1,5 +1,5 @@
 ---
-title: CloudFront+APIGateway連携時の注意点
+title: CloudFront+API Gateway連携時の注意点
 tags:
   - AWS
   - CloudFront
@@ -11,7 +11,7 @@ organization_url_name: null
 slide: false
 ignorePublish: false
 ---
-# CloudFrontとAPI Gateway連携時の注意点
+# CloudFront+API Gateway連携時の注意点
 
 ## はじめに
 
