@@ -1,21 +1,9 @@
----
-title: CloudFront+APIGateway連携時の注意点
-tags:
-  - AWS
-  - CloudFront
-  - APIGateway
-private: false
-updated_at: ''
-id: null
-organization_url_name: null
-slide: false
-ignorePublish: false
----
 # CloudFrontとAPI Gateway連携時の注意点
 
 ## はじめに
 
-CloudFrontとAPI Gatewayを連携させる際、思わぬ問題に遭遇することがあります。CloudFrontからAPI Gatewayへのルーティングで「Host ヘッダー」によって発生する問題と、その解決策について解説します。
+CloudFrontとAPI Gatewayを連携させる際、思わぬ問題に遭遇することがあります。
+CloudFrontからAPI Gatewayへのルーティングで「Host ヘッダー」「パスの不一致」によって発生する問題と、その解決策について解説します。
 
 ## 問題の現象
 
@@ -49,21 +37,44 @@ CloudFrontで以下のような設定をした場合：
 問題を解決した後、今度は別のエラーが発生することがあります：
 - エラーメッセージ: `{"message":"Missing Authentication Token"}`
 
-これは以下の理由で発生します：
+### 具体的な不一致の例
 
-1. CloudFrontのパスパターン `/api/*` とオリジンパス設定のミスマッチ
-2. API Gatewayで定義されていないパスへのリクエスト
+この問題は、CloudFrontとAPI Gatewayのパス設定の不一致から発生しています。具体的な例を見てみましょう：
+
+#### CloudFrontの設定
+- オリジン: `test.execute-api.ap-northeast-1.amazonaws.com/prod`
+- パスパターン: `/api/*`
+
+#### API Gatewayの設定
+- ステージ: `prod`
+- リソース: `/test`（GETメソッド設定済み）
+
+#### リクエストの流れ
+1. ユーザーが `https://test.cloudfront.net/api/test` にアクセス
+2. CloudFrontは `/api/*` パターンに一致し、API Gatewayにリクエストを転送
+3. **重要**: このとき、CloudFrontは `https://test.execute-api.ap-northeast-1.amazonaws.com/prod/api/test` にリクエストを送信
+4. しかし、API Gatewayには `/api/test` というリソースは定義されておらず、`/test` リソースのみ存在
+5. 結果として「Missing Authentication Token」エラーが返される
+
+直接 `https://test.execute-api.ap-northeast-1.amazonaws.com/prod/test` にアクセスすると正常に動作するのに、CloudFront経由では失敗する理由はここにあります。
 
 ### 解決策
 
-以下のいずれかの方法で対応します：
-1. **API Gateway側**: `/api/test` リソースを追加する
-2. **CloudFront側**: オリジンパスやビヘイビア設定を調整する
+この問題を解決するには2つの方法があります：
+
+1. **API Gateway側の対応**:
+   - API Gatewayに `/api/test` リソースを追加する
+   - これにより、CloudFrontから転送されるパスと一致するようになる
+
+2. **CloudFront側の対応**:
+   - オリジンパスの設定を変更する（例：`/prod/api` の代わりに `/prod` を指定）
+   - ビヘイビアのパスパターンを API Gateway のリソース構造に合わせて調整する（例：`/api/*` から `/test` に変更）
 
 ## まとめ
 
 エッジ最適化API Gatewayをオリジンとして使用する場合は：
 1. **Hostヘッダーを転送しない**設定にする
 2. **パスの一致**を確認する
-
-これらの点に注意することで、CloudFrontとAPI Gatewayの連携における問題を回避できます。
+   - CloudFrontのパスパターンとAPI Gatewayのリソース構造が整合していることを確認
+   - オリジンパス設定が正しいことを確認
+   - ※エッジ最適化API Gatewayが直接的な原因ではない
