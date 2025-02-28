@@ -5,7 +5,7 @@ tags:
   - CloudFront
   - APIGateway
 private: false
-updated_at: '2025-02-28T23:26:12+09:00'
+updated_at: '2025-02-28T23:32:02+09:00'
 id: f6a145692fba3cd63e4e
 organization_url_name: null
 slide: false
