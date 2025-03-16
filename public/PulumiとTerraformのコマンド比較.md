@@ -13,8 +13,9 @@ ignorePublish: false
 
 # PulumiとTerraformのコマンド比較
 
-Infrastructure as Code（IaC）ツールとして人気のあるPulumiとTerraformのコマンド比較表です。
-どちらかのツールに慣れている方が、もう一方のツールを使う際の参考にしてください。
+Infrastructure as Code（IaC）ツールとして人気のあるPulumiとTerraformのコマンド比較表を作成しました。
+どちらかというと、Pulumiは馴染みのないIaCかと思います。
+最近になって、初めて利用する機会があり、有名どころのTerraformと比較してみました。
 
 ## コマンド比較表
 
@@ -57,8 +58,3 @@ const bucket = new aws.s3.Bucket("example", {
     },
 });
 ```
-
-## まとめ
-
-- **Terraform**：独自のHCL構文を使用し、宣言的なアプローチ。広範なコミュニティとエコシステム。
-- **Pulumi**：一般的なプログラミング言語を使用し、命令的なコントロールも可能。強力な型システムとテストフレームワークが利用可能。
