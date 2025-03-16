@@ -1,3 +1,15 @@
+---
+title: AWS環境をコードで構築：Pulumi入門
+tags:
+  - AWS
+  - TypeScript
+  - Pulumi
+private: false
+updated_at: ''
+organization_url_name: null
+slide: false
+ignorePublish: false
+---
 # はじめに
 
 現場でPulumiというIaCを初めて利用することになりました。
@@ -16,12 +28,12 @@ Pulumiは、クラウドインフラを一般的なプログラミング言語�
 ## Pulumiのインストール
 
 macOSで、勉強をしたため、brewでインストールしました。
-**macOS**
+
 ```bash
 % brew install pulumi
 ```
 
-インストールが完了したら、以下のコマンドでバージョンを確認します：
+インストールが完了したら、以下のコマンドでバージョンを確認します。
 
 ```bash
 % pulumi version
@@ -44,7 +56,7 @@ Default output format [json]:
 
 # プロジェクト構造の作成
 
-効率的にコードを管理するため、AWSサービスごとにファイルを分ける構造を採用します。
+効率的にコードを管理するため、AWSサービスごとにファイルを分ける構造を採用しました。
 
 ```bash
 # メインプロジェクトディレクトリを作成
@@ -110,11 +122,11 @@ found 0 vulnerabilities
 Finished installing dependencies
 
 Your new project is ready to go! ✨
+
+To perform an initial deployment, run `pulumi up`
 ```
 
 ```bash
-To perform an initial deployment, run `pulumi up`
-
 # 構造化されたディレクトリを作成
 % mkdir -p src/{network,compute,storage,database,security}
 
@@ -134,11 +146,7 @@ drwxr-xr-x    7 suzukishouta  staff     224  3 16 16:43 src
 -rw-r--r--    1 suzukishouta  staff     438  3 16 16:42 tsconfig.json
 ```
 
-# VPCの作成
-
-AWSネットワークの基本単位であるVPCを作成します。
-
-## VPCモジュール
+# VPC、IGW、サブネットグループ、ルートテーブルの作成
 
 参考: 下記コードをvimでコピー&ペースト
 ```bash
@@ -150,6 +158,8 @@ AWSネットワークの基本単位であるVPCを作成します。
 % vim index.ts
 % vim Pulumi.dev.yaml
 ```
+
+## VPCモジュール
 
 `src/network/vpc.ts` ファイルを作成します：
 
@@ -196,7 +206,7 @@ export class Vpc extends pulumi.ComponentResource {
 }
 ```
 
-## インターネットゲートウェイモジュール
+## IGWモジュール
 
 VPCをインターネットに接続するため、`src/network/internet-gateway.ts` ファイルを作成します：
 
@@ -461,7 +471,7 @@ export const publicRouteTableId = publicRouteTable.routeTable.id;
 
 ## 環境設定ファイル
 
-開発環境の設定を行うため、`Pulumi.dev.yaml` ファイルを作成します：
+開発環境の設定を行うため、`Pulumi.dev.yaml` ファイルを作成します。
 
 ```yaml
 config:
@@ -472,7 +482,7 @@ config:
 
 ## デプロイ前のチェック
 
-実際にリソースを作成する前に、変更内容をプレビューします：
+実際にリソースを作成する前に、変更内容をプレビューします。
 
 ```bash
 # プロジェクトの依存関係をインストール
@@ -502,7 +512,7 @@ dev*  n/a          n/a             https://app.pulumi.com/???/pulumi-aws-infra/d
 
 ## リソースの状態確認
 
-作成されたリソースの状態を確認するには：
+作成されたリソースの状態を確認するには。
 
 ```bash
 # スタックの出力値を確認
@@ -511,7 +521,7 @@ dev*  n/a          n/a             https://app.pulumi.com/???/pulumi-aws-infra/d
 
 ## リソースの削除
 
-不要になったリソースを削除するには：
+不要になったリソースを削除するには。
 
 ```bash
 # すべてのリソースを削除
@@ -523,7 +533,7 @@ dev*  n/a          n/a             https://app.pulumi.com/???/pulumi-aws-infra/d
 
 # TypeScriptの基本構文解説
 
-Pulumi with TypeScriptを使う際に役立つ基本的な構文を解説します：
+Pulumi with TypeScriptを使う際に役立つ基本的な構文を解説します。
 
 ## インターフェース
 オブジェクトの形状（どんなプロパティを持つか）を定義します。
