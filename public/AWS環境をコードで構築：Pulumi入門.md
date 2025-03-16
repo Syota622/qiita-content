@@ -5,8 +5,8 @@ tags:
   - TypeScript
   - Pulumi
 private: false
-updated_at: ''
-id: ''
+updated_at: '2025-03-16T17:23:46+09:00'
+id: 6879a6a6c75cd9a8f5d4
 organization_url_name: null
 slide: false
 ignorePublish: false
