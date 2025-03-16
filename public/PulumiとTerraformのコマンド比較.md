@@ -1,4 +1,3 @@
-# format
 ---
 title: PulumiとTerraformのコマンド比較
 tags:
