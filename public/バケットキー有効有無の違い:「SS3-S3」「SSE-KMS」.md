@@ -1,5 +1,5 @@
 ---
-title: バケットキーを有効有無の違い:「SS3-S3」「SSE-KMS」
+title: バケットキー有効有無の違い:「SS3-S3」「SSE-KMS」
 tags:
   - AWS
   - S3
