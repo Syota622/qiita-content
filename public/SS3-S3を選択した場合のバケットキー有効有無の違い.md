@@ -41,7 +41,7 @@ S3バケットの暗号化設定について、「SSE-S3」と「バケットキ
 
 ## 将来的なSS3-S3からSSE-KMSへの設定変更を考慮する場合
 
-AWS re:Postのコミュニティ回答によると：（参考ドキュメント[2]）
+AWS re:Postのコミュニティ回答によると：([参考ドキュメント])
 
 > 「将来的にSSE-KMSに切り替える可能性がある場合や、個別のオブジェクトレベルでSSE-KMSを使用する可能性がある場合は、バケットキーを有効にしておくとよいでしょう。」
 
@@ -51,21 +51,21 @@ AWS re:Postのコミュニティ回答によると：（参考ドキュメント
 - AWSの公式ドキュメントには明記されていないが、コミュニティ回答で確認可能
 - 将来的にSSE-KMSへの移行を考慮する場合は、バケットキーを有効にしておくのも一つの選択肢
 
-このような細かい仕様の理解は、AWSリソースを最適に管理するために重要です。
-
 ## 参考ドキュメント
 [1]
-- [AWS re:Postのコミュニティ回答](https://repost.aws/ja/questions/QUNfHSIoUZQru2sxvaoPEdyQ/enable-bucket-key-with-sse-s3)
-===
+[AWS re:Postのコミュニティ回答](https://repost.aws/ja/questions/QUNfHSIoUZQru2sxvaoPEdyQ/enable-bucket-key-with-sse-s3)
+
+```
 Keeping bucket key enabled or disabled won't make any difference as it's essentially a concept for SSE-KMS. Keeping bucket key enabled for SSE-KMS reduce the overall KMS cost substantially as KMS API calls request gets reduced marginally by up to 99% but that won't be the case for SSE-S# as in case of SSE-S3, AWS KMS doesn't come in to the picture for user.
 
 バケットキーを有効または無効にしても、SSE-KMSにとっては本質的に同じことなので、違いはありません。SSE-KMSでバケットキーを有効にしておくと、KMS APIコールの要求が最大99%までわずかに減少するため、KMSの全体的なコストが大幅に削減されますが、SSE-S#の場合は、SSE-S3の場合と同様に、AWS KMSはユーザーには関係のない話です。
-===
+```
 
 [2]
-- [AWS re:Postのコミュニティ回答](https://repost.aws/ja/questions/QUQPqQONRJR82adgj3xsSu0w/difference-in-functionality-and-cost-when-enabling-s3-bucket-key-for-default-encryption)
-===
+[AWS re:Postのコミュニティ回答](https://repost.aws/ja/questions/QUQPqQONRJR82adgj3xsSu0w/difference-in-functionality-and-cost-when-enabling-s3-bucket-key-for-default-encryption)
+
+```
 It's good to leave the option enabled, despite using SSE-S3, simply so that if you decide to switch to SSE-KMS later or if individual objects are uploaded with SSE-KMS selected at the object level, the SSE-KMS encryption process will leverage bucket keys for optimising costs.
 
 SSE-S3を使用しているにもかかわらず、オプションを有効にしたままにしておくのは良いことです。後でSSE-KMSに切り替えることを決めた場合や、SSE-KMSがオブジェクトレベルで選択された状態で個々のオブジェクトがアップロードされた場合、SSE-KMSの暗号化プロセスではバケットキーが活用され、コストが最適化されます。
-===
+```
