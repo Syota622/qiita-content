@@ -2,12 +2,12 @@
 title: AWSで学ぶSST入門
 tags:
   - AWS
-  - sst
   - IaC
-  - pulumi
+  - Pulumi
+  - sst
 private: false
-updated_at: ''
-id: ''
+updated_at: '2025-07-03T21:55:58+09:00'
+id: 76f0836ade5b1545c224
 organization_url_name: null
 slide: false
 ignorePublish: false
