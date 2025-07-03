@@ -6,7 +6,7 @@ tags:
   - Pulumi
   - sst
 private: false
-updated_at: '2025-07-03T21:55:58+09:00'
+updated_at: '2025-07-03T21:57:42+09:00'
 id: 76f0836ade5b1545c224
 organization_url_name: null
 slide: false
