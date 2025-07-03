@@ -18,10 +18,6 @@ ignorePublish: false
 SST (Serverless Stack Toolkit) は、pulumiをベースにした、サーバーレスアプリケーションを構築するためのフレームワークです。  
 インフラのコード化とデプロイを容易にし、開発体験を向上させるツールセットを提供します。
 
-## 関連リソース
-- [モノレポセットアップガイド](https://sst.dev/docs/set-up-a-monorepo/)
-- [SSTコンソール](https://sst.dev/docs/console/)
-
 ## 環境セットアップ手順
 
 ### 1. サンプルプロジェクト
